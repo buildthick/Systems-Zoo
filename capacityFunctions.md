@@ -21,18 +21,6 @@ $$
 
 ---
 
-## 4. **Logistic capacity (S-curve)**
-
-$$
-f(R) = \frac{1}{1 + e^{-k(R - R^*)}}
-$$
-
-* Smooth S-shaped guard.
-* `R*` = inflection point, `k` = steepness.
-* Nice when you want symmetric transition around a “critical point” (e.g., ICU occupancy tipping into crisis).
-
----
-
 ## 5. **Queue-based / service time capacity**
 
 $$
