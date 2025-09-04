@@ -170,7 +170,109 @@ $$
    * HalfSat = 2000 → fraction = 4000/(4000+2000) ≈ 0.67
    * Actual served ≈ 6700/s
 
----
+    # Goal
+    
+    Pick $K$ in the saturating guard
+    
+    $$
+    \text{Avail}(B)=\frac{B}{B+K},\qquad \text{Actual Starts}=\text{Desired}\times \text{Avail}(B)
+    $$
+    
+    so that when the number of **accessible docked bikes** $B$ is “just enough,” the system delivers **about half** of desired rides. “Just enough” will mean: *enough bikes to serve 50% of riders **within their 10-minute patience window***.
+    
+    ---
+    
+    # Define the observables (with units)
+    
+    * $D$ = desired ride starts, **rides/hour** (e.g., $D=1200/\text{hr}$)
+    * $W$ = patience window, **hours** (10 minutes $=10/60=1/6$ hr)
+    * $b$ = bike service rate, **trips/bike/hour** (e.g., $b=5/\text{hr}$)
+    * $B$ = bikes concurrently **accessible** to riders (within walk radius), **bikes**
+    
+    (If you’re modeling citywide totals, treat $B$ as “effective” accessible bikes, not the entire fleet—more on that at the end.)
+    
+    ---
+    
+    # Capacity vs. demand **in the window**
+    
+    * **Demand in window:** $D_W = D \times W$  (rides)
+    * **Capacity in window (with $B$ bikes):** $C_W = B \times b \times W$  (rides)
+    
+    We want **half** the window’s demand to be satisfiable when availability is “just enough.” Set
+    
+    $$
+    C_W = \tfrac{1}{2} D_W \quad\Longrightarrow\quad B\,b\,W = \tfrac{1}{2}D\,W.
+    $$
+    
+    Cancel $W$ (nice property):
+    
+    $$
+    \boxed{B_{50}=\frac{D}{2b}}.
+    $$
+    
+    This is the **number of accessible bikes** that lets you serve \~50% of demand at steady load.
+    To make your **half-sat** curve hit 50% at that point, set
+    
+    $$
+    \boxed{K=B_{50}=\frac{D}{2b}}.
+    $$
+    
+    Now at $B=K$: $\text{Avail}=K/(K+K)=0.5$, so **Actual Starts** $=D\times 0.5$, which also matches capacity $B b = (D/2b)\,b=D/2$. All consistent.
+    
+    ---
+    
+    # Plug the numbers (your example)
+    
+    * $D=1200/\text{hr}$
+    * $b=5/\text{hr/bike}$
+    
+    $$
+    K=\frac{1200}{2\times 5}=\frac{1200}{10}= \boxed{120\ \text{bikes}}.
+    $$
+    
+    Sanity checks:
+    
+    * **Per 10-min window:** $D_W=1200\times\frac{1}{6}=200$ desired rides.
+      One bike can do $bW=5\times\frac{1}{6}\approx0.833$ trips in 10 minutes.
+      With $B=120$ bikes → capacity $=120\times0.833\approx100$ rides, i.e., **50%** of 200. ✔️
+    * **Per hour view:** $B b=120\times5=600$ rides/hr, which is 50% of 1200. ✔️
+    
+    So set **HalfSat $K=120$** in the guard $\text{Avail}(B)=\frac{B}{B+120}$.
+    Then $\text{Actual Starts}=D\times\text{Avail}(B)$ will correctly deliver \~600/hr when $B=120$.
+    
+    ---
+    
+    # Quick recipe (reuse anywhere)
+    
+    1. Measure/assume $D$ (rides/hr) and $b$ (trips/bike/hr).
+    2. Compute $K=D/(2b)$.
+    3. Use $\text{Avail}(B)=B/(B+K)$, $\text{Actual}=D\times \text{Avail}$.
+    
+    > If you want a different “midpoint” (e.g., 60% at $B=K$), switch to a logistic/Hill curve; half-sat always centers at 50% by design.
+    
+    ---
+    
+    # Practical refinements
+    
+    * **Accessibility factor:** riders don’t see every dock. Let $p$ be the fraction of docked bikes typically within a 10-minute reach. If your stock tracks total docked bikes $D_{tot}$, set $B=p\,D_{tot}$. The guard uses $B$. Equivalently you can scale $K\to K/p$.
+    * **Heterogeneous stations:** you can do the same per station with local $D_s,b_s$, then sum flows.
+    * **Slope/steepness:** if you want the ramp to be sharper (more “all-or-nothing”), use a Hill form
+      $\text{Avail}=\frac{B^n}{B^n+K^n}$ with $n>1$. Midpoint stays $B=K$.
+    
+    ---
+    
+    # Why this isn’t arbitrary
+    
+    Every number came from observable behavior:
+    
+    * $D$: demand rate (from swipe data/app opens)
+    * $b$: trips per bike per hour (from telemetry)
+    * $K$: solved so that **capacity at $B=K$** equals **half of demand**.
+    
+    That ties the smooth guard directly to **what users experience in 10 minutes** and what bikes can actually deliver.
+    
+    
+    ---
 
 # ✅ Summary
 
