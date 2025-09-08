@@ -73,15 +73,18 @@ $$
 ## B1. Simple goal-seeking (first-order)
 
 $$
-\frac{dY}{dt} = -k \,(Y - Y^{*}) \\
-Y(t) = Y^{*} + \left(Y_{0} - Y^{*}\right) e^{-kt}
+\begin{aligned}
+\frac{dY}{dt} &= -k\,\bigl(Y - Y^{*}\bigr) \\
+Y(t) &= Y^{*} + \bigl(Y_{0} - Y^{*}\bigr)\,e^{-k t}
+\end{aligned}
 $$
 
-Discrete: $Y_{t+1} = Y_t - k\Delta t\,(Y_t - Y^*)$
+Discrete: \(Y_{t+1} = Y_t - k\,\Delta t\,(Y_t - Y^{*})\)
 
-* $Y$ = controlled variable
-* $Y^*$ = goal/target
-* $k>0$ = adjustment speed
+* \(Y\) = controlled variable  
+* \(Y^{*}\) = goal/target  
+* \(k>0\) = adjustment speed
+
 
 ## B2. Inventory control (stock + proportional correction)
 
