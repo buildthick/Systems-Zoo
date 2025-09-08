@@ -73,9 +73,8 @@ $$
 ## B1. Simple goal-seeking (first-order)
 
 $$
-\frac{dY}{dt} = -k \,(Y - Y^{*})
-\quad \Rightarrow \quad
-Y(t) = Y^{*} + (Y_{0} - Y^{*}) e^{-kt}
+\frac{dY}{dt} = -k \,(Y - Y^{*}) \\
+Y(t) = Y^{*} + \left(Y_{0} - Y^{*}\right) e^{-kt}
 $$
 
 Discrete: $Y_{t+1} = Y_t - k\Delta t\,(Y_t - Y^*)$
