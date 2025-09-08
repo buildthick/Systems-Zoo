@@ -80,7 +80,11 @@ $$
 Y(t) = Y^{*} + \left( Y_{0} - Y^{*} \right) e^{-k t}
 $$
 
-Discrete: $Y_{t+1} = Y_{t} - k \,\Delta t \,(Y_{t} - Y^{*})$
+Discrete: 
+
+$$
+Y_{t+1} = Y_{t} - k \,\Delta t \,(Y_{t} - Y^{*})
+$$
 
 * $Y$ = controlled variable  
 * $Y^{*}$ = goal/target  
