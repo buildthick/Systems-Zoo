@@ -76,7 +76,9 @@ $$
 \frac{dY}{dt} = -k \,(Y - Y^{*})
 $$
 
-Y(t)=Y∗+(Y0​−Y∗)e−kt
+$$
+Y(t) = Y^{*} + \left( Y_{0} - Y^{*} \right) e^{-k t}
+$$
 
 Discrete: 
 
