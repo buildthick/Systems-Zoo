@@ -75,6 +75,7 @@ $$
 $$
 \begin{aligned}
 \frac{dY}{dt} &= -k\,\bigl(Y - Y^{*}\bigr) \\
+$$
 Y(t) &= Y^{*} + \bigl(Y_{0} - Y^{*}\bigr)\,e^{-k t}
 \end{aligned}
 $$
