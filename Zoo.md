@@ -77,7 +77,7 @@ $$
 $$
 
 $$
-Y(t) = Y^{*} + \left( Y_{0} - Y^{*} \right) e^{-k t}
+Y(t) = Y^{\ast} + \bigl( Y_{0} - Y^{\ast} \bigr) e^{-k t}
 $$
 
 Discrete: 
