@@ -203,7 +203,11 @@ Actuator: $\frac{dY}{dt} = g(u,\,\cdot)$ (domain-specific)
 
 ## B6. Goal erosion (moving goal under pressure)
 
-$\frac{dY}{dt} = -k\,(Y - Y^*), \qquad \frac{dY^*}{dt} = -\phi\,\bigl(\text{Pressure}(Y)\bigr)$
+$$
+\frac{dY}{dt} = -k\,(Y - Y^*), \qquad
+\frac{dY^*}{dt} = -\phi\,\bigl(\text{Pressure}(Y)\bigr)
+$$
+
 
 * $Y^*$ drifts downward under pressure $\phi>0$, weakening the balancing loop (archetype: “Eroding Goals”).
 
