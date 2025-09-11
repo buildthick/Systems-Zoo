@@ -115,6 +115,47 @@ $$
 * $\gamma>0$ = price adjustment speed
   At equilibrium $Q_D(P^*)=Q_S(P^*)$, deviations are corrected (balancing).
 
+    ### 1. Typical demand function
+
+Demand decreases as price rises. A common linear form is:
+
+$$
+Q_D(P) = a - bP, \quad a>0, b>0
+$$
+
+* $a$ = intercept (demand when price = 0)
+* $b$ = slope (sensitivity of demand to price)
+
+---
+
+### 2. Typical supply function
+
+Supply increases as price rises. A common linear form is:
+
+$$
+Q_S(P) = c + dP, \quad c\ge0, d>0
+$$
+
+* $c$ = baseline supply (at zero price)
+* $d$ = slope (responsiveness of supply to price)
+
+---
+
+### 3. Equilibrium price
+
+At equilibrium, $Q_D(P^*) = Q_S(P^*)$.
+
+$$
+a - bP^* = c + dP^*
+$$
+
+$$
+P^* = \frac{a-c}{b+d}
+$$
+
+So the system converges toward $P^*$, with speed determined by $\gamma$.
+
+
 ## B4. Error correction with delay (oscillation-prone)
 
 $$
