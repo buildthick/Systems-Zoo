@@ -1,98 +1,84 @@
-Perfect 🙌 — here’s your **menu of parameter dynamics**. You can think of it as the “toolbox” for turning dead constants into living parts of your model. 
+Ahh I see 👌 — you want the nice math rendering on GitHub. For that, you can use **GitHub-flavored Markdown with LaTeX** inside double dollar signs (`$$ ... $$`) for block equations or single dollar signs for inline.
+
+Here’s the same menu, rewritten so the formulas render “pretty” when viewed on GitHub:
 
 ---
 
 # 🛠️ Menu of Parameter Dynamics
 
-### 1. **Capacity Functions** (classic)
+### 1. Capacity Functions (classic)
 
 * **Linear:**
+  $Flow = k \cdot Stock$
 
-  $$
-  Flow = k \cdot Stock
-  $$
 * **Saturating (HalfSat / Michaelis–Menten):**
+  $Flow = \frac{MaxRate \cdot Stock}{HalfSat + Stock}$
 
-  $$
-  Flow = \frac{MaxRate \cdot Stock}{HalfSat + Stock}
-  $$
 * **Goal-seeking:**
-
-  $$
-  Flow = \frac{(Target - Stock)}{\tau}
-  $$
+  $Flow = \frac{Target - Stock}{\tau}$
 
 ---
 
-### 2. **Delays** (slow adjustment)
+### 2. Delays (slow adjustment)
 
-* Parameters adjust to reality with a lag.
-* Example:
+Parameters adjust to reality with a lag.
 
-  $$
-  Perceived\ Wait\ Time = DELAY1(Actual\ Wait, \tau)
-  $$
-* Gives realistic inertia in perception-driven flows (orders, satisfaction, churn).
+Example:
+$PerceivedWaitTime = DELAY1(ActualWait, \tau)$
 
 ---
 
-### 3. **Thresholds / Regime Switches**
+### 3. Thresholds / Regime Switches
 
-* Parameters jump when a stock crosses a threshold.
-* Example:
+Parameters jump when a stock crosses a threshold.
 
-  $$
-  Mortality\ Rate = 
-  \begin{cases}
-  m_\text{base}, & ICU < 80\% \\
-  m_\text{high}, & ICU \ge 80\%
-  \end{cases}
-  $$
-* Useful for “tipping points” and nonlinear policies.
+Example:
 
----
-
-### 4. **Adaptive Stocks** (parameters as state)
-
-* Treat the “parameter” as its own stock with learning/decay.
-* Example: workforce productivity improves over time:
-
-  $$
-  \frac{dProd}{dt} = \frac{(MaxProd - Prod)}{\tau_\text{learning}}
-  $$
-* Then use `Prod` as a multiplier in other flows.
+$$
+MortalityRate =
+\begin{cases}
+m_{base}, & ICU < 0.8 \cdot Capacity \\
+m_{high}, & ICU \geq 0.8 \cdot Capacity
+\end{cases}
+$$
 
 ---
 
-### 5. **Multiplicative Modifiers**
+### 4. Adaptive Stocks (parameters as state)
 
-* Parameters scaled by another stock or flow.
-* Example:
+Treat the “parameter” as its own stock with learning/decay.
 
-  $$
-  AdEff = BaseEff \times (1 + \alpha \cdot ActiveSubs)
-  $$
-* Turns a flat parameter into a feedback-sensitive one.
+Example:
+$\frac{dProd}{dt} = \frac{MaxProd - Prod}{\tau_{learning}}$
 
 ---
 
-### 6. **Perceptions / Expectations**
+### 5. Multiplicative Modifiers
 
-* Modeled as smoothed stocks.
-* Example:
+Parameters scaled by another stock or flow.
 
-  $$
-  Expected\ Price = SMOOTH(Actual\ Price, \tau)
-  $$
-* Affects purchasing or adoption without being a hard “capacity.”
+Example:
+$AdEff = BaseEff \cdot (1 + \alpha \cdot ActiveSubs)$
 
 ---
 
-### 7. **Exogenous Noise / Shocks**
+### 6. Perceptions / Expectations
 
-* Time-varying inputs (step functions, random noise).
-* Example: sudden +20% demand for 30 days.
-* Not endogenous, but useful for stress-testing loops.
+Modeled as smoothed stocks.
+
+Example:
+$ExpectedPrice = SMOOTH(ActualPrice, \tau)$
+
+---
+
+### 7. Exogenous Noise / Shocks
+
+Time-varying inputs (step functions, random noise).
+
+Example:
+
+* Sudden $+20\%$ demand for 30 days
+* $Signups = BaseSignups + Shock(t)$
 
 ---
 
@@ -100,4 +86,4 @@ Perfect 🙌 — here’s your **menu of parameter dynamics**. You can think of 
 
 ---
 
-Would you like me to show how this menu maps **back onto your subscription model** (i.e. which one you’d pick to make Signups endogenous, which to make Conversion endogenous, which to make Churn endogenous)?
+Want me to also give you a **ready-to-paste `.md` template** (with proper headings and spacing) so it renders like a clean reference sheet straight away?
