@@ -1,4 +1,4 @@
-Perfect 🙌 — here’s your **menu of parameter dynamics**. You can think of it as the “toolbox” for turning dead constants into living parts of your model.
+Perfect 🙌 — here’s your **menu of parameter dynamics**. You can think of it as the “toolbox” for turning dead constants into living parts of your model. 
 
 ---
 
