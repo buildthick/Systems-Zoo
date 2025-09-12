@@ -1,8 +1,3 @@
-Ahh I see 👌 — you want the nice math rendering on GitHub. For that, you can use **GitHub-flavored Markdown with LaTeX** inside double dollar signs (`$$ ... $$`) for block equations or single dollar signs for inline.
-
-Here’s the same menu, rewritten so the formulas render “pretty” when viewed on GitHub:
-
----
 
 # 🛠️ Menu of Parameter Dynamics
 
@@ -83,7 +78,3 @@ Example:
 ---
 
 ✅ With just these 7 “moves,” you can turn almost any constant slider into a living, dynamic parameter.
-
----
-
-Want me to also give you a **ready-to-paste `.md` template** (with proper headings and spacing) so it renders like a clean reference sheet straight away?
